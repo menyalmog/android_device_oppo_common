@@ -32,8 +32,8 @@ import com.slim.device.settings.ScreenOffGesture;
 
 import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
-import com.android.internal.util.slim.ButtonsConstants;
-import com.android.internal.util.slim.SlimActions;
+import com.android.internal.util.mahdi.ButtonsConstants;
+import com.android.internal.util.mahdi.MahdiActions;
 
 public class KeyHandler implements DeviceKeyHandler {
 
@@ -125,9 +125,9 @@ public class KeyHandler implements DeviceKeyHandler {
             }
             if (action.equals(ButtonsConstants.ACTION_CAMERA)
                     || !action.startsWith("**")) {
-                SlimActions.processAction(mContext, ButtonsConstants.ACTION_WAKE_DEVICE, false);
+                MahdiActions.processAction(mContext, ButtonsConstants.ACTION_WAKE_DEVICE, false);
             }
-            SlimActions.processAction(mContext, action, false);
+            MahdiActions.processAction(mContext, action, false);
         }
     }
 
