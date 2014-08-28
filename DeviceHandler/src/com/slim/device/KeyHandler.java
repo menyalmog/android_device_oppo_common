@@ -148,11 +148,12 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return false;
         }
-        boolean isKeySupported = ArrayUtils.contains(sSupportedGestures, event.getScanCode());
+        int scanCode = event.getScanCode();
+        boolean isKeySupported = ArrayUtils.contains(sSupportedGestures, scanCode);
         if (isKeySupported && !mEventHandler.hasMessages(GESTURE_REQUEST)) {
             Message msg = getMessageForKeyEvent(event);
             if (mProximitySensor != null) {
-                mEventHandler.sendMessageDelayed(msg, 200);
+                mEventHandler.sendMessageDelayed(msg, scanCode == KEY_DOUBLE_TAP ? 400 : 200);
                 processEvent(event);
             } else {
                 mEventHandler.sendMessage(msg);
