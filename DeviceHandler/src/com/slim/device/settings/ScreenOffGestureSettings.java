@@ -18,6 +18,8 @@ package com.slim.device.settings;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class ScreenOffGestureSettings extends Activity {
 
@@ -28,6 +30,17 @@ public class ScreenOffGestureSettings extends Activity {
         getFragmentManager().beginTransaction().replace(android.R.id.content,
                 new ScreenOffGesture()).commit();
         getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        // Respond to the action bar's Up/Home button
+        case android.R.id.home:
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
